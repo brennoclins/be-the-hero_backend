@@ -3,12 +3,15 @@ const express = require('express');
 //importa as regras de manipulação dos dados das ongs
 const OngController = require('./controller/OngController');
 const IncidentController = require('./controller/IncidentController');
+const ProfileController = require('./controller/ProfileController');
 
 const routes = express.Router();
 
 
 routes.get('/ongs', OngController.listAll);
 routes.post('/ongs', OngController.create);
+
+routes.get('/profile', ProfileController.index);
 
 routes.get('/incidents', IncidentController.listAll);
 routes.post('/incidents', IncidentController.create);

@@ -2,7 +2,19 @@ const connection = require('../database/connection');
 
 module.exports = {
     async listAll(request, response){
-        const incidents = await connection('incidents').select('*');
+        //se page não existi o valor de page vai ser 1
+        const { page = 1 } = request.query;
+
+        //pegando o total de registro na tabela
+        const [count] = await connection('incidents').count();
+
+        //listando registro com paginação
+        const incidents = await connection('incidents')
+            .limit(5) //limita para 5 o numero de registros listados
+            .offset((page - 1) * 5)// pula pagina de 5 em 5 registro
+            .select('*');
+        
+        response.header('X-Total-Count', count['count(*)']);
         
         return response.json(incidents);
     },

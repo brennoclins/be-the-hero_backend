@@ -1,15 +1,15 @@
 const express = require('express');
+const crypto = require('crypto');
 
 const routes = express.Router();
 
-routes.post('/users', (request, response) => {
-    const body = request.body;
-    console.log(body);
+//rota para criar as ongs
+routes.post('/ongs', (request, response) => {
+    const { name, email, whatsapp, city, uf } = request.body;
 
-    return response.json({
-        evento: 'Ola! Semana OmniStack 11.0',
-        aluno: 'Brenno C. Lins'
-    });
+    const id = crypto.randomBytes(4).toString('HEX');
+    console.log(data);
+    return response.json();
 });
 
 // exporto todas as rotas

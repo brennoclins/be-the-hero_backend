@@ -27,7 +27,13 @@ app.use(express.json());
   * SQL: MySQL, SQLite, PostgreSQL, Oracle, MS Server
   * NoSQL: MongoDB, CouchDB, etc
   */
- 
+
+  /**
+   * Tipos de abordagem para lidar com bancos de dados SQL no JavaScript
+   * Driver nativo do DB  para nodeJS: SELECT * FROM users;
+   * Query Buildr: table('users').select('*').where()
+   */
+  
 app.get('/users/:id', (request, response) => {
     const params = request.params;
     console.log(params);

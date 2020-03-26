@@ -10,12 +10,20 @@ module.exports = {
 
         //listando registro com paginação
         const incidents = await connection('incidents')
+            .join('ongs', 'ongs.id', '=', 'incidents.ong_id')//juntando duas tabelas
             .limit(5) //limita para 5 o numero de registros listados
             .offset((page - 1) * 5)// pula pagina de 5 em 5 registro
-            .select('*');
+            .select([
+                'incidents.*', //pega todos os campos da tabela incidents
+                'ongs.name', 
+                'ongs.email', 
+                'ongs.whatsapp',
+                'ongs.city',
+                'ongs.uf'
+            ]);
         
         response.header('X-Total-Count', count['count(*)']);
-        
+
         return response.json(incidents);
     },
     //cria novo incident

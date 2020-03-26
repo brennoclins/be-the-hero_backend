@@ -4,12 +4,12 @@ exports.up = function(knex) {
         table.increments();
 
         table.string('title').notNullable();
-        table.string('description').notNullabçe();
+        table.string('description').notNullable();
         
-        table.decimal('value').notNullabçe();
+        table.decimal('value').notNullable();
         
         //chave estrangeira
-        table.string('ong_id').notNullabçe();
+        table.string('ong_id').notNullable();
         //criando relacionamento do campo "ong_id" da tabela "incidents" com o campo "id" da tabela de "ongs"
         table.foreign('ong_id').references('id').inTable('ongs');
 
@@ -18,7 +18,7 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTable('incidentes');
+    return knex.schema.dropTable('incidents');
 };
 
 /**
@@ -30,3 +30,9 @@ exports.down = function(knex) {
   * para criar a tabela
   * npx knex migrate:latest
   */
+
+  /**
+   * caso tenha algum erro rode o comando
+   * para disfacer a ultima migrate executada ou seja, roda o metodo DOWN e deleta a tabela
+   * npx knex migrate:rollback
+   */

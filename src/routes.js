@@ -1,38 +1,16 @@
 const express = require('express');
-const crypto = require('crypto');
 
-//importando para conexão com o banco de dados
-const connection = require('./database/connection');
+//importa as regras de manipulação dos dados das ongs
+const OngController = require('./controller/OngController');
+
 
 const routes = express.Router();
 
 //lista registro da tabela ongs
-routes.get('/ongs', async (request, response) => {
-    const ongs = await connection('ongs').select('*');
-
-    return response.json(ongs);
-});
+routes.get('/ongs', OngController.listAll);
 
 //rota para criar as ongs
-routes.post('/ongs', async (request, response) => {
-    const { name, email, whatsapp, city, uf } = request.body;
-    //gera a id da ONG
-    const id = crypto.randomBytes(4).toString('HEX');
-
-    //inserir dados no banco na tabela ongs
-    await connection('ongs').insert({
-        id,
-        name,
-        email,
-        whatsapp,
-        city,
-        uf,
-    });
-    
-
-    //resposta para o cliente
-    return response.json({ id });
-});
+routes.post('/ongs', OngController.create);
 
 // exporto todas as rotas
 module.exports = routes;

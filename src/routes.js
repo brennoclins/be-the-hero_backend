@@ -1,15 +1,30 @@
 const express = require('express');
 const crypto = require('crypto');
 
+//importando para conexão com o banco de dados
+const connection = require('./database/connection');
+
 const routes = express.Router();
 
 //rota para criar as ongs
-routes.post('/ongs', (request, response) => {
+routes.post('/ongs', async (request, response) => {
     const { name, email, whatsapp, city, uf } = request.body;
-
+    //gera a id da ONG
     const id = crypto.randomBytes(4).toString('HEX');
-    console.log(data);
-    return response.json();
+
+    //inserir dados no banco na tabela ongs
+    await connection('ongs').insert({
+        id,
+        name,
+        email,
+        whatsapp,
+        city,
+        uf,
+    });
+    
+
+    //resposta para o cliente
+    return response.json({ id });
 });
 
 // exporto todas as rotas

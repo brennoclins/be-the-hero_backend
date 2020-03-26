@@ -2,17 +2,19 @@ const express = require('express');
 
 //importa as regras de manipulação dos dados das ongs
 const OngController = require('./controller/OngController');
-
+const IncidentController = require('./controller/IncidentController');
 
 const routes = express.Router();
 
-//lista registro da tabela ongs
-routes.get('/ongs', OngController.listAll);
 
-//rota para criar as ongs
+routes.get('/ongs', OngController.listAll);
 routes.post('/ongs', OngController.create);
 
-// exporto todas as rotas
+routes.get('/incidents', IncidentController.listAll);
+routes.post('/incidents', IncidentController.create);
+routes.delete('/incidents/:id', IncidentController.delete);
+
+
 module.exports = routes;
 
 

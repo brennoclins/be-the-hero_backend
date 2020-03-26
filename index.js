@@ -22,6 +22,12 @@ app.use(express.json());
  * Request Body: Corpo da requisição, utilizado para criar ou alterar recursos
  */
 
+ /**
+  * Bancos de dados: 
+  * SQL: MySQL, SQLite, PostgreSQL, Oracle, MS Server
+  * NoSQL: MongoDB, CouchDB, etc
+  */
+ 
 app.get('/users/:id', (request, response) => {
     const params = request.params;
     console.log(params);

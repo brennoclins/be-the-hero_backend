@@ -1,0 +1,15 @@
+## Banco de dados ##
+
+# Entidades:
+ONG
+Casos(incidentes)
+
+# Funcionalidade do sistema:
+Login ONG;
+Logout ONG;
+Cadastro de ONG;
+Cadastrar novos casos;
+Deletar casos;
+Listar casos especificos de uma ONG;
+Listatodos os casos;
+Entrar em contato com a ONG;

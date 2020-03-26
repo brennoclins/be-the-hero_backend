@@ -4,10 +4,10 @@ exports.up = function(knex) {
     return knex.schema.createTable('ongs', function(table){
         table.string('id').primary();
         table.string('name').notNullable();
-        table.string('email').notNullabçe();
-        table.string('whatsapp').notNullabçe();
-        table.string('city').notNullabçe();
-        table.string('uf', 2).notNullabçe();
+        table.string('email').notNullable();
+        table.string('whatsapp').notNullable();
+        table.string('city').notNullable();
+        table.string('uf', 2).notNullable();
         table.timestamps();// cria os campos `created_at` e `updated_at`
     });
   

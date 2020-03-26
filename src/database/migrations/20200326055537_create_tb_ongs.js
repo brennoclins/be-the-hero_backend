@@ -1,7 +1,7 @@
 
 // esse metodo serve para criar a tabela
 exports.up = function(knex) {
-    knex.schema.createTable('ongs', function(table){
+    return knex.schema.createTable('ongs', function(table){
         table.string('id').primary();
         table.string('name').notNullable();
         table.string('email').notNullabçe();
@@ -15,5 +15,8 @@ exports.up = function(knex) {
 
 //esse metodo serve para deletar a tabela caso algo de errado
 exports.down = function(knex) {
-    knex.schema.dropTable('ongs')
+    return knex.schema.dropTable('ongs');
 };
+
+//no terminal rode o comando:
+// npx knex migrate:latest

@@ -2,7 +2,7 @@
 
 # Entidades:
 ONG
-Casos(incidentes)
+Casos(incidents)
 
 # Funcionalidade do sistema:
 Login ONG;
@@ -11,5 +11,5 @@ Cadastro de ONG;
 Cadastrar novos casos;
 Deletar casos;
 Listar casos especificos de uma ONG;
-Listatodos os casos;
+Lista todos os casos;
 Entrar em contato com a ONG;

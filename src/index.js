@@ -1,9 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 
 //importando rotas do arquivo ROUTES.JS
 const routes = require('./routes');
 
 const app = express();
+
+app.use(cors());
 
 //informar ao express para usar o JSON
 app.use(express.json());
